@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 5000
+
 app.use(express.json())
 const path = require('path')
 
@@ -33,4 +33,7 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/', (req, res) => res.send('MERN Car-Rental !!'))
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+const server = app.listen(process.env.PORT || 5000, () => {
+  const port = server.address().port;
+  console.log(`Express is working on port ${port}`);
+});
